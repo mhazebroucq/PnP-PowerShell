@@ -532,9 +532,9 @@ namespace PnP.PowerShell.Commands.Base
             {
                 // Log in to a specific page on the tenant which is known to be performant
                 var webLoginClientContext = authManager.GetWebLoginClientContext(url.ToString(), loginRequestUri: new Uri(url, "/_layouts/15/settings.aspx"));
-                
+
                 // Ensure the login process has been completed
-                if(webLoginClientContext == null)
+                if (webLoginClientContext == null)
                 {
                     return null;
                 }
@@ -573,18 +573,18 @@ namespace PnP.PowerShell.Commands.Base
 #endif
 
 #if !PNPPSCORE
-        internal static PnPConnection InstantiateSPOnlineConnection(Uri url, 
-            PSCredential credentials, 
-            PSHost host, 
-            bool currentCredentials, 
-            int minimalHealthScore, 
-            int retryCount, 
-            int retryWait, 
-            int requestTimeout, 
-            string tenantAdminUrl, 
+        internal static PnPConnection InstantiateSPOnlineConnection(Uri url,
+            PSCredential credentials,
+            PSHost host,
+            bool currentCredentials,
+            int minimalHealthScore,
+            int retryCount,
+            int retryWait,
+            int requestTimeout,
+            string tenantAdminUrl,
             bool disableTelemetry,
-            AzureEnvironment azureEnvironment, 
-            bool skipAdminCheck = false, 
+            AzureEnvironment azureEnvironment,
+            bool skipAdminCheck = false,
             ClientAuthenticationMode authenticationMode = ClientAuthenticationMode.Default)
         {
             var context = new PnPClientContext(url.AbsoluteUri);
@@ -766,7 +766,7 @@ namespace PnP.PowerShell.Commands.Base
 #endif
 
 #if !PNPPSCORE
-            internal static PnPConnection InstantiateAdfsConnection(Uri url, bool useKerberos, PSCredential credentials, PSHost host, int minimalHealthScore, int retryCount, int retryWait, int requestTimeout, string tenantAdminUrl, bool disableTelemetry, bool skipAdminCheck = false, string loginProviderName = null)
+        internal static PnPConnection InstantiateAdfsConnection(Uri url, bool useKerberos, PSCredential credentials, PSHost host, int minimalHealthScore, int retryCount, int retryWait, int requestTimeout, string tenantAdminUrl, bool disableTelemetry, bool skipAdminCheck = false, string loginProviderName = null)
         {
             using (var authManager = new OfficeDevPnP.Core.AuthenticationManager())
             {
@@ -803,6 +803,7 @@ namespace PnP.PowerShell.Commands.Base
                                     adfsRelyingParty),
                                 retryCount,
                                 retryWait * 1000);
+                    context.Credentials = networkCredentials;
                 }
 
                 context.RetryCount = retryCount;

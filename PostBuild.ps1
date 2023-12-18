@@ -2,22 +2,22 @@ param($ProjectDir, $ConfigurationName, $TargetDir, $TargetFileName, $SolutionDir
 
 if($ConfigurationName -like "Debug*")
 {
-	$documentsFolder = [environment]::getfolderpath("mydocuments");
+	$psModulesFolder = "C:\PSModules\";
 	if($TargetDir -like "*Core*")
 	{
-		$DestinationFolder = "$documentsFolder\PowerShell\Modules\PnPPowerShellCore"
+		$DestinationFolder = "$psModulesFolder\PowerShell\Modules\PnPPowerShellCore"
 	} else {
 		if($ConfigurationName -like "Debug15")
 		{
-			$DestinationFolder = "$documentsFolder\WindowsPowerShell\Modules\SharePointPnPPowerShell2013"
+			$DestinationFolder = "$psModulesFolder\SharePointPnPPowerShell2013"
 		} elseif($ConfigurationName -like "Debug16")
 		{
-			$DestinationFolder = "$documentsFolder\WindowsPowerShell\Modules\SharePointPnPPowerShell2016"
+			$DestinationFolder = "$psModulesFolder\SharePointPnPPowerShell2016"
 		} elseif($ConfigurationName -like "Debug19")
 		{
-			$DestinationFolder = "$documentsFolder\WindowsPowerShell\Modules\SharePointPnPPowerShell2019"
+			$DestinationFolder = "$psModulesFolder\SharePointPnPPowerShell2019"
 		} else {
-			$DestinationFolder = "$documentsFolder\WindowsPowerShell\Modules\SharePointPnPPowerShellOnline"
+			$DestinationFolder = "$psModulesFolder\SharePointPnPPowerShellOnline"
 		}
 	}
 	# Module folder there?
@@ -66,28 +66,28 @@ if($ConfigurationName -like "Debug*")
 	}
 } elseif ($ConfigurationName -like "Release*")
 {
-    $documentsFolder = [environment]::getfolderpath("mydocuments");
+    $psModulesFolder = [environment]::getfolderpath("mydocuments");
 	if($TargetDir -like "*Core*")
 	{
-		$DestinationFolder = "$documentsFolder\PowerShell\Modules\PnPPowerShellCore"
+		$DestinationFolder = "$psModulesFolder\PowerShell\Modules\PnPPowerShellCore"
 	} else {
 		switch($ConfigurationName)
 		{
 			"Release15" 
 			{
-				$DestinationFolder = "$documentsFolder\WindowsPowerShell\Modules\SharePointPnPPowerShell2013"
+				$DestinationFolder = "$psModulesFolder\WindowsPowerShell\Modules\SharePointPnPPowerShell2013"
 			}
 			"Release16"
 			{
-				$DestinationFolder = "$documentsFolder\WindowsPowerShell\Modules\SharePointPnPPowerShell2016"
+				$DestinationFolder = "$psModulesFolder\WindowsPowerShell\Modules\SharePointPnPPowerShell2016"
 			}
 			"Release19"
 			{
-				$DestinationFolder = "$documentsFolder\WindowsPowerShell\Modules\SharePointPnPPowerShell2019"
+				$DestinationFolder = "$psModulesFolder\WindowsPowerShell\Modules\SharePointPnPPowerShell2019"
 			}
 			"Release"
 			{
-				$DestinationFolder = "$documentsFolder\WindowsPowerShell\Modules\SharePointPnPPowerShellOnline"
+				$DestinationFolder = "$psModulesFolder\WindowsPowerShell\Modules\SharePointPnPPowerShellOnline"
 			}
 		}
 	}
